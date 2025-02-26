@@ -2,28 +2,40 @@
 document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
-    const navLinksItems = document.querySelectorAll('.nav-links a, .nav-links button');
+    const menuIcon = mobileMenuBtn.querySelector('i');
 
-    // Toggle menu
-    mobileMenuBtn.addEventListener('click', function() {
+    function toggleMenu() {
         navLinks.classList.toggle('active');
+        menuIcon.classList.toggle('fa-bars');
+        menuIcon.classList.toggle('fa-times');
         document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
-        
-        // Toggle menu icon
-        const icon = this.querySelector('i');
-        icon.classList.toggle('fa-bars');
-        icon.classList.toggle('fa-times');
+    }
+
+    // Toggle menu when clicking the button
+    mobileMenuBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleMenu();
     });
 
     // Close menu when clicking on a link
-    navLinksItems.forEach(item => {
+    navLinks.querySelectorAll('a, button').forEach(item => {
         item.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            document.body.style.overflow = '';
-            const icon = mobileMenuBtn.querySelector('i');
-            icon.classList.add('fa-bars');
-            icon.classList.remove('fa-times');
+            toggleMenu();
         });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (navLinks.classList.contains('active') && 
+            !navLinks.contains(e.target) && 
+            !mobileMenuBtn.contains(e.target)) {
+            toggleMenu();
+        }
+    });
+
+    // Prevent menu from closing when clicking inside
+    navLinks.addEventListener('click', (e) => {
+        e.stopPropagation();
     });
 });
 
@@ -78,5 +90,58 @@ document.addEventListener('DOMContentLoaded', function() {
         cardWidth = cards[0].offsetWidth + 30;
         maxIndex = Math.max(0, cards.length - Math.floor(track.offsetWidth / cardWidth));
         scrollToIndex(currentIndex);
+    });
+});
+
+// Funkce pro ovládání množství produktů
+document.querySelectorAll('.quantity-selector').forEach(selector => {
+    const minusBtn = selector.querySelector('.minus');
+    const plusBtn = selector.querySelector('.plus');
+    const input = selector.querySelector('.quantity-input');
+
+    minusBtn.addEventListener('click', () => {
+        const currentValue = parseInt(input.value);
+        if (currentValue > 1) {
+            input.value = currentValue - 1;
+        }
+    });
+
+    plusBtn.addEventListener('click', () => {
+        const currentValue = parseInt(input.value);
+        if (currentValue < 10) {
+            input.value = currentValue + 1;
+        }
+    });
+
+    input.addEventListener('change', () => {
+        let value = parseInt(input.value);
+        if (isNaN(value) || value < 1) {
+            input.value = 1;
+        } else if (value > 10) {
+            input.value = 10;
+        }
+    });
+});
+
+// Funkce pro přidání do košíku
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', () => {
+        const card = button.closest('.product-card');
+        const productName = card.querySelector('h3').textContent;
+        const quantity = card.querySelector('.quantity-input').value;
+        const price = card.querySelector('.price').textContent;
+        
+        // Zde můžete implementovat logiku pro přidání do košíku
+        // Pro ukázku zobrazíme alert
+        alert(`Přidáno do košíku:
+Produkt: ${productName}
+Množství: ${quantity}
+Cena: ${price}`);
+        
+        // Animace tlačítka
+        button.classList.add('added');
+        setTimeout(() => {
+            button.classList.remove('added');
+        }, 1000);
     });
 }); 

@@ -15,8 +15,8 @@
     <!-- Navigace -->
     <nav class="navbar">
         <div class="container">
-            <div class="logo">NANOSTRIPS</div>
-            <button class="mobile-menu-btn">
+            <a href="/" class="logo">NANOSTRIPS</a>
+            <button class="mobile-menu-btn" aria-label="Menu">
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-links">
@@ -31,13 +31,13 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>OKAMŽITÁ ENERGIE</h1>
+                <h1>REVOLUCE V SUPLEMENTACI</h1>
                 <h2>KDYKOLIV A KDEKOLIV</h2>
-                <p>Revoluční energetický doplněk s rychlým vstřebáváním přes ústní sliznici</p>
+                <p>Jakou substanci by jste si do vesmíru vzali Vy?</p>
                 <button class="btn-primary">VYZKOUŠET NANOSTRIPS</button>
             </div>
             <div class="hero-image">
-                <!-- Zde bude obrázek produktu -->
+                <img src="images/product-box.png" alt="Nanostrips Energy Box" class="product-hero-image">
             </div>
         </div>
     </section>
@@ -47,18 +47,18 @@
         <div class="container">
             <div class="benefit-card">
                 <i class="fas fa-bolt"></i>
-                <h3>Okamžitý účinek</h3>
-                <p>Energie během několika sekund díky vstřebávání přes sliznici</p>
+                <h3>Okamžitá absorpce přes sliznici</h3>
+                <p>Nezatěžuje žaludek – vhodné i pro ty, kteří mají citlivé trávení nebo dodržují přerušovaný půst. Jednoduchá rutina – tři produkty pokrývají vše, co potřebuješ každý den. Ideální pro vesmírné mise – žádná gravitace, žádné starosti, žádná voda nutná.</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-brain"></i>
+                <h3>Inteligentní řešení</h3>
+                <p>Bez cukru a zbytečných plnidel – čisté složení zaměřené na maximální efektivitu. Věděli jste že pilulka je jen 30% účinná látka a zbytek nepotřebné látky pro tělo? Vysoká úroveň inovace – vyvinuto ve spolupráci s vědci a specialisty na výživu.</p>
             </div>
             <div class="benefit-card">
                 <i class="fas fa-leaf"></i>
                 <h3>Přírodní složení</h3>
-                <p>Pouze přírodní ingredience bez umělých přísad</p>
-            </div>
-            <div class="benefit-card">
-                <i class="fas fa-brain"></i>
-                <h3>Lepší soustředění</h3>
-                <p>Zvyšuje mentální výkon a koncentraci</p>
+                <p>Žádné tablety ani kapsle – snadné užívání bez pocitu nepohodlí. Přesná dávka v každém stripu – žádné odhadování množství jako u prášků nebo tekutin. Jednoduchá rutina – tři produkty pokrývají vše, co potřebuješ každý den. Minimalistické balení – skladné a praktické, vejde se do kapsy nebo peněženky.</p>
             </div>
         </div>
     </section>
@@ -153,6 +153,7 @@
                 
                 <div class="product-visual">
                     <div class="product-image">
+                        <img src="images/product-showcase.png" alt="Nanostrips produkt" class="product-showcase-image">
                         <img src="images/logo.png" alt="Nanostrips logo" class="product-logo">
                         <div class="glow-effect"></div>
                     </div>
@@ -268,6 +269,208 @@
         </div>
     </section>
 
+    <!-- Nákup produktu -->
+    <section class="shop" id="shop">
+        <div class="container">
+            <h2 class="section-title">Vyberte si svůj balíček</h2>
+            <p class="section-description">Vyzkoušejte sílu Nanostrips ještě dnes</p>
+            
+            <div class="shop-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/product-box.png" alt="Nanostrips balení">
+                        <div class="product-badge">Bestseller</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Nanostrips Energy Box</h3>
+                        <p class="product-description">30 stripů pro okamžitou energii</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> Okamžitý účinek</li>
+                            <li><i class="fas fa-check"></i> Přírodní složení</li>
+                            <li><i class="fas fa-check"></i> Bez cukru</li>
+                        </ul>
+                        <div class="product-price">
+                            <span class="price">599 Kč</span>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn minus"><i class="fas fa-minus"></i></button>
+                                <input type="number" value="1" min="1" max="10" class="quantity-input">
+                                <button class="quantity-btn plus"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <button class="btn-primary add-to-cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            Přidat do košíku
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/product-box.png" alt="Nanostrips balení">
+                        <div class="product-badge">Výhodný balíček</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Nanostrips Double Pack</h3>
+                        <p class="product-description">60 stripů pro dlouhodobé použití</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> 2x balení po 30 stripech</li>
+                            <li><i class="fas fa-check"></i> Ušetříte 20%</li>
+                            <li><i class="fas fa-check"></i> Doprava zdarma</li>
+                        </ul>
+                        <div class="product-price">
+                            <span class="price">999 Kč</span>
+                            <span class="original-price">1198 Kč</span>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn minus"><i class="fas fa-minus"></i></button>
+                                <input type="number" value="1" min="1" max="10" class="quantity-input">
+                                <button class="quantity-btn plus"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <button class="btn-primary add-to-cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            Přidat do košíku
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/product-box.png" alt="Nanostrips balení">
+                        <div class="product-badge">Mega balení</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Nanostrips Family Pack</h3>
+                        <p class="product-description">90 stripů pro celou rodinu</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> 3x balení po 30 stripech</li>
+                            <li><i class="fas fa-check"></i> Ušetříte 30%</li>
+                            <li><i class="fas fa-check"></i> VIP servis</li>
+                        </ul>
+                        <div class="product-price">
+                            <span class="price">1399 Kč</span>
+                            <span class="original-price">1797 Kč</span>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn minus"><i class="fas fa-minus"></i></button>
+                                <input type="number" value="1" min="1" max="10" class="quantity-input">
+                                <button class="quantity-btn plus"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <button class="btn-primary add-to-cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            Přidat do košíku
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shop-benefits">
+                <div class="shop-benefit">
+                    <i class="fas fa-truck"></i>
+                    <h4>Doprava zdarma</h4>
+                    <p>Při nákupu nad 999 Kč</p>
+                </div>
+                <div class="shop-benefit">
+                    <i class="fas fa-undo"></i>
+                    <h4>30 dní na vrácení</h4>
+                    <p>Garance spokojenosti</p>
+                </div>
+                <div class="shop-benefit">
+                    <i class="fas fa-lock"></i>
+                    <h4>Bezpečná platba</h4>
+                    <p>Šifrované spojení</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Předplatné -->
+    <section class="subscription" id="subscription">
+        <div class="container">
+            <h2 class="section-title">Buďte vždy připraveni</h2>
+            <p class="section-description">Vyberte si plán, který vám nejlépe vyhovuje, a už nikdy nebudete bez energie</p>
+            
+            <div class="subscription-grid">
+                <div class="subscription-card starter">
+                    <div class="card-header">
+                        <h3>Začátečník</h3>
+                        <div class="price">
+                            <span class="amount">499 Kč</span>
+                            <span class="period">/měsíc</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <ul class="subscription-features">
+                            <li><i class="fas fa-check"></i> 1x balení měsíčně</li>
+                            <li><i class="fas fa-check"></i> Základní příchutě</li>
+                            <li><i class="fas fa-check"></i> Možnost zrušení kdykoliv</li>
+                        </ul>
+                        <button class="btn-secondary">Vybrat plán</button>
+                    </div>
+                </div>
+
+                <div class="subscription-card popular">
+                    <div class="popular-badge">Nejoblíbenější</div>
+                    <div class="card-header">
+                        <h3>Optimal</h3>
+                        <div class="price">
+                            <span class="amount">899 Kč</span>
+                            <span class="period">/měsíc</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <ul class="subscription-features">
+                            <li><i class="fas fa-check"></i> 2x balení měsíčně</li>
+                            <li><i class="fas fa-check"></i> Všechny příchutě</li>
+                            <li><i class="fas fa-check"></i> 15% sleva na další produkty</li>
+                            <li><i class="fas fa-check"></i> Přednostní přístup k novinkám</li>
+                            <li><i class="fas fa-check"></i> Možnost zrušení kdykoliv</li>
+                        </ul>
+                        <button class="btn-primary">Vybrat plán</button>
+                    </div>
+                </div>
+
+                <div class="subscription-card premium">
+                    <div class="card-header">
+                        <h3>Premium</h3>
+                        <div class="price">
+                            <span class="amount">1299 Kč</span>
+                            <span class="period">/měsíc</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <ul class="subscription-features">
+                            <li><i class="fas fa-check"></i> 3x balení měsíčně</li>
+                            <li><i class="fas fa-check"></i> Všechny příchutě + limitované edice</li>
+                            <li><i class="fas fa-check"></i> 25% sleva na další produkty</li>
+                            <li><i class="fas fa-check"></i> VIP přístup k novinkám</li>
+                            <li><i class="fas fa-check"></i> Osobní konzultace zdarma</li>
+                            <li><i class="fas fa-check"></i> Možnost zrušení kdykoliv</li>
+                        </ul>
+                        <button class="btn-secondary">Vybrat plán</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subscription-benefits">
+                <div class="benefit">
+                    <i class="fas fa-truck"></i>
+                    <h4>Doprava zdarma</h4>
+                    <p>Doručení až domů bez dodatečných poplatků</p>
+                </div>
+                <div class="benefit">
+                    <i class="fas fa-calendar-check"></i>
+                    <h4>Flexibilní plán</h4>
+                    <p>Možnost změny nebo pozastavení kdykoliv</p>
+                </div>
+                <div class="benefit">
+                    <i class="fas fa-percentage"></i>
+                    <h4>Věrnostní program</h4>
+                    <p>Sbírejte body a získejte extra odměny</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Patička -->
     <footer class="footer">
         <div class="container">
@@ -318,5 +521,6 @@
             </div>
         </div>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html> 
