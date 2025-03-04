@@ -48,49 +48,57 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextButton = document.querySelector('.next-review');
 
     let currentIndex = 0;
-    let cardWidth = cards[0].offsetWidth + 30; // Including gap
-    let maxIndex = Math.max(0, cards.length - Math.floor(track.offsetWidth / cardWidth));
+    let startX;
+    let scrollLeft;
+    let isDragging = false;
 
-    function updateDots() {
+    // Přidáme transition pro plynulý přechod
+    track.style.transition = 'transform 0.3s ease-out';
+
+    function updateCarousel() {
+        const cardWidth = cards[0].offsetWidth;
+        const gap = parseInt(window.getComputedStyle(track).gap) || 30;
+        const offset = currentIndex * (cardWidth + gap);
+        track.style.transform = `translateX(-${offset}px)`;
+        
+        // Aktualizace teček
         dots.forEach((dot, index) => {
             dot.classList.toggle('active', index === currentIndex);
         });
+
+        // Kontrola tlačítek
+        prevButton.style.opacity = currentIndex === 0 ? '0.5' : '1';
+        nextButton.style.opacity = currentIndex === cards.length - 1 ? '0.5' : '1';
     }
 
-    function scrollToIndex(index) {
-        currentIndex = Math.max(0, Math.min(index, maxIndex));
-        track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-        updateDots();
+    function goToSlide(index) {
+        currentIndex = Math.max(0, Math.min(index, cards.length - 1));
+        updateCarousel();
     }
 
-    // Event listeners for navigation buttons
-    prevButton.addEventListener('click', () => scrollToIndex(currentIndex - 1));
-    nextButton.addEventListener('click', () => scrollToIndex(currentIndex + 1));
+    // Event listeners pro tlačítka
+    prevButton.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            goToSlide(currentIndex - 1);
+        }
+    });
 
-    // Event listeners for dots
+    nextButton.addEventListener('click', () => {
+        if (currentIndex < cards.length - 1) {
+            goToSlide(currentIndex + 1);
+        }
+    });
+
+    // Event listeners pro tečky
     dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => scrollToIndex(index));
+        dot.addEventListener('click', () => goToSlide(index));
     });
 
-    // Auto-play functionality
-    let autoplayInterval = setInterval(() => {
-        scrollToIndex((currentIndex + 1) % (maxIndex + 1));
-    }, 5000);
+    // Aktualizace při změně velikosti okna
+    window.addEventListener('resize', updateCarousel);
 
-    // Pause auto-play on hover
-    track.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
-    track.addEventListener('mouseleave', () => {
-        autoplayInterval = setInterval(() => {
-            scrollToIndex((currentIndex + 1) % (maxIndex + 1));
-        }, 5000);
-    });
-
-    // Update card width and maxIndex on window resize
-    window.addEventListener('resize', () => {
-        cardWidth = cards[0].offsetWidth + 30;
-        maxIndex = Math.max(0, cards.length - Math.floor(track.offsetWidth / cardWidth));
-        scrollToIndex(currentIndex);
-    });
+    // Počáteční nastavení
+    updateCarousel();
 });
 
 // Funkce pro ovládání množství produktů

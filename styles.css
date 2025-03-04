@@ -1,9 +1,11 @@
 :root {
-    --primary-color: #6C63FF;
-    --accent-color: #FF6B6B;
-    --text-color: #2D3436;
-    --light-bg: #F8F9FA;
-    --gradient: linear-gradient(135deg, #6C63FF 0%, #FF6B6B 100%);
+    --primary: #0504CD;
+    --primary-light: #2827D9;
+    --primary-dark: #03038B;
+    --gray-light: #D9D9D9;
+    --gray-medium: #A7A7A7;
+    --black: #000000;
+    --white: #FFFFFF;
 }
 
 * {
@@ -32,8 +34,8 @@ h1, h2, h3, h4, .logo {
 
 /* Navigace */
 .navbar {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-light);
     padding: 1rem 0;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     position: fixed;
@@ -51,12 +53,20 @@ h1, h2, h3, h4, .logo {
 .logo {
     font-size: 1.8rem;
     font-weight: 800;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--primary);
+    -webkit-text-fill-color: var(--primary);
+    background: none;
     letter-spacing: -1px;
     text-decoration: none;
     transition: opacity 0.3s ease;
+    position: relative;
+}
+
+.logo sup {
+    font-size: 0.5em;
+    position: absolute;
+    top: 0;
+    right: -1.5em;
 }
 
 .logo:hover {
@@ -87,14 +97,14 @@ h1, h2, h3, h4, .logo {
 
 .nav-links a {
     text-decoration: none;
-    color: var(--text-color);
+    color: var(--black);
     font-weight: 600;
     font-size: 1.1rem;
     transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: var(--accent-color);
+    color: var(--primary);
 }
 
 /* Responzivní design pro navigaci */
@@ -167,28 +177,29 @@ h1, h2, h3, h4, .logo {
 
 /* Tlačítka */
 .btn-primary {
-    background: var(--gradient);
-    color: white;
-    padding: 1rem 2rem;
+    background: var(--primary);
+    color: var(--white);
     border: none;
-    border-radius: 50px;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1rem;
     cursor: pointer;
-    font-weight: 700;
-    font-size: 1.1rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 .btn-primary:hover {
+    background: var(--primary-light);
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(108, 99, 255, 0.2);
+    box-shadow: 0 5px 15px rgba(5, 4, 205, 0.2);
 }
 
 /* Hero sekce */
 .hero {
-    padding: 12rem 0 8rem;
-    background: var(--light-bg);
+    padding: 80px 0;
+    background: var(--white);
     position: relative;
     overflow: hidden;
 }
@@ -196,14 +207,13 @@ h1, h2, h3, h4, .logo {
 .hero::before {
     content: '';
     position: absolute;
-    top: -50%;
-    right: -20%;
-    width: 80%;
-    height: 200%;
-    background: var(--gradient);
-    opacity: 0.1;
-    border-radius: 50%;
-    transform: rotate(-20deg);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(5, 4, 205, 0.05) 0%, rgba(5, 4, 205, 0.1) 100%);
+    transform: skewY(-6deg);
+    transform-origin: top left;
 }
 
 .hero .container {
@@ -244,16 +254,16 @@ h1, h2, h3, h4, .logo {
     line-height: 1.1;
     margin-bottom: 1.5rem;
     font-weight: 800;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--primary);
+    -webkit-text-fill-color: var(--primary);
+    background: none;
     letter-spacing: -2px;
 }
 
 .hero h2 {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
-    color: var(--text-color);
+    color: var(--black);
     font-weight: 700;
     letter-spacing: -1px;
 }
@@ -261,7 +271,7 @@ h1, h2, h3, h4, .logo {
 .hero p {
     font-size: 1.4rem;
     margin-bottom: 3rem;
-    color: #666;
+    color: var(--gray-medium);
     line-height: 1.6;
 }
 
@@ -387,9 +397,9 @@ h1, h2, h3, h4, .logo {
 .product-info h2 {
     font-size: 1.6rem;
     font-weight: 600;
-    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--primary);
+    -webkit-text-fill-color: var(--primary);
+    background: none;
     margin-bottom: 8px;
     line-height: 1.2;
 }
@@ -412,10 +422,11 @@ h1, h2, h3, h4, .logo {
     align-items: center;
     gap: 12px;
     padding: 10px 12px;
-    background: white;
+    background: var(--white);
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
     transition: transform 0.2s ease;
+    border: 1px solid var(--gray-light);
 }
 
 .feature-item:hover {
@@ -424,8 +435,8 @@ h1, h2, h3, h4, .logo {
 
 .feature-item i {
     font-size: 1rem;
-    color: #6366f1;
-    background: #f0f0ff;
+    color: var(--primary);
+    background: rgba(5, 4, 205, 0.1);
     padding: 6px;
     border-radius: 6px;
 }
@@ -433,13 +444,13 @@ h1, h2, h3, h4, .logo {
 .feature-text h3 {
     font-size: 0.9rem;
     font-weight: 600;
-    color: #333;
+    color: var(--black);
     margin-bottom: 1px;
 }
 
 .feature-text p {
     font-size: 0.8rem;
-    color: #666;
+    color: var(--gray-medium);
 }
 
 .product-visual {
@@ -564,8 +575,8 @@ h1, h2, h3, h4, .logo {
 
 /* Výhody */
 .benefits {
-    padding: 8rem 0;
-    background: white;
+    padding: 80px 0;
+    background-color: var(--gray-light);
     position: relative;
 }
 
@@ -582,18 +593,18 @@ h1, h2, h3, h4, .logo {
 .review-card {
     display: flex;
     flex-direction: column;
-    background: white;
+    background: var(--white);
     border-radius: 20px;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     position: relative;
+    border: 1px solid var(--gray-light);
 }
 
 /* Výhody */
 .benefit-card {
     text-align: center;
     padding: 3rem 2rem;
-    background: var(--light-bg);
     min-height: 450px;
 }
 
@@ -621,9 +632,9 @@ h1, h2, h3, h4, .logo {
 
 .benefit-card i {
     font-size: 3.2rem;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--primary);
+    -webkit-text-fill-color: var(--primary);
+    background: none;
     margin-bottom: 2rem;
     position: relative;
     z-index: 2;
@@ -632,7 +643,7 @@ h1, h2, h3, h4, .logo {
 .benefit-card h3 {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
-    color: var(--text-color);
+    color: var(--black);
     font-weight: 700;
     position: relative;
     z-index: 2;
@@ -640,7 +651,7 @@ h1, h2, h3, h4, .logo {
 }
 
 .benefit-card p {
-    color: #666;
+    color: var(--gray-medium);
     font-size: 1.1rem;
     position: relative;
     z-index: 2;
@@ -748,6 +759,8 @@ h1, h2, h3, h4, .logo {
     font-weight: 700;
     box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
     z-index: 2;
+    background: var(--primary);
+    color: var(--white);
 }
 
 .flavor-card h3 {
@@ -782,7 +795,7 @@ h1, h2, h3, h4, .logo {
 }
 
 .flavor-features i {
-    color: var(--primary-color);
+    color: var(--primary);
     margin-right: 15px;
     font-size: 1.2rem;
 }
@@ -791,7 +804,7 @@ h1, h2, h3, h4, .logo {
     display: inline-block;
     margin: 1.5rem;
     padding: 1rem 2rem;
-    background: var(--gradient);
+    background: var(--primary);
     color: white;
     border: none;
     border-radius: 50px;
@@ -808,13 +821,14 @@ h1, h2, h3, h4, .logo {
 
 .btn-secondary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(108, 99, 255, 0.25);
+    background: var(--primary-light);
+    box-shadow: 0 10px 25px rgba(5, 4, 205, 0.25);
 }
 
 /* Patička */
 .footer {
-    background-color: var(--text-color);
-    color: white;
+    background: var(--black);
+    color: var(--white);
     padding: 80px 0 40px;
     margin-top: 80px;
     position: relative;
@@ -855,11 +869,19 @@ h1, h2, h3, h4, .logo {
 .footer-logo {
     font-size: 2rem;
     font-weight: 800;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--primary);
+    -webkit-text-fill-color: var(--primary);
+    background: none;
     margin-bottom: 20px;
     letter-spacing: -1px;
+    position: relative;
+}
+
+.footer-logo sup {
+    font-size: 0.5em;
+    position: absolute;
+    top: 0;
+    right: -0.75em;
 }
 
 .footer-description {
@@ -882,13 +904,13 @@ h1, h2, h3, h4, .logo {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: var(--white);
     font-size: 1.2rem;
     transition: all 0.3s ease;
 }
 
 .social-link:hover {
-    background: var(--gradient);
+    background: var(--primary);
     transform: translateY(-3px);
 }
 
@@ -901,14 +923,13 @@ h1, h2, h3, h4, .logo {
 }
 
 .footer-links a {
-    color: #999;
+    color: var(--gray-light);
     text-decoration: none;
     transition: color 0.3s ease;
-    font-size: 1.1rem;
 }
 
 .footer-links a:hover {
-    color: white;
+    color: var(--white);
 }
 
 .newsletter-form {
@@ -948,7 +969,8 @@ h1, h2, h3, h4, .logo {
 }
 
 .footer-bottom {
-    padding-top: 40px;
+    margin-top: 40px;
+    padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     text-align: center;
 }
@@ -979,8 +1001,8 @@ h1, h2, h3, h4, .logo {
 
 /* Reviews sekce */
 .reviews {
-    padding: 120px 0;
-    background: white;
+    padding: 80px 0;
+    background-color: var(--gray-light);
     position: relative;
     overflow: hidden;
 }
@@ -1021,11 +1043,12 @@ h1, h2, h3, h4, .logo {
 
 .review-card {
     min-width: calc(33.333% - 20px);
-    background: white;
+    background: var(--white);
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     transition: all 0.4s ease;
+    border: 1px solid var(--gray-light);
 }
 
 .review-card:hover {
@@ -1038,7 +1061,7 @@ h1, h2, h3, h4, .logo {
 }
 
 .review-rating i {
-    color: #FFD700;
+    color: var(--primary);
     font-size: 1.2rem;
     margin-right: 5px;
 }
@@ -1046,7 +1069,7 @@ h1, h2, h3, h4, .logo {
 .review-text {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: #555;
+    color: var(--gray-medium);
     margin-bottom: 25px;
     font-style: italic;
 }
@@ -1061,7 +1084,7 @@ h1, h2, h3, h4, .logo {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: var(--gradient);
+    background: var(--primary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1097,7 +1120,7 @@ h1, h2, h3, h4, .logo {
 }
 
 .review-nav:hover {
-    background: var(--gradient);
+    background: var(--primary);
     color: white;
     transform: scale(1.1);
 }
@@ -1113,13 +1136,13 @@ h1, h2, h3, h4, .logo {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: #ddd;
+    background: var(--gray-light);
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .dot.active {
-    background: var(--primary-color);
+    background: var(--primary);
     transform: scale(1.3);
 }
 
@@ -1146,8 +1169,8 @@ h1, h2, h3, h4, .logo {
 
 /* Subscription sekce */
 .subscription {
-    padding: 120px 0;
-    background: white;
+    padding: 80px 0;
+    background-color: var(--gray-light);
     position: relative;
     overflow: hidden;
 }
@@ -1182,14 +1205,16 @@ h1, h2, h3, h4, .logo {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
     position: relative;
     overflow: hidden;
+    background: var(--white);
+    border: 1px solid var(--gray-light);
 }
 
 .popular-badge {
     position: absolute;
     top: 25px;
     right: -75px;
-    background: var(--gradient);
-    color: white;
+    background: var(--primary);
+    color: var(--white);
     padding: 6px 75px;
     transform: rotate(45deg);
     font-size: 0.5rem;
@@ -1219,9 +1244,7 @@ h1, h2, h3, h4, .logo {
 }
 
 .subscription-card.popular {
-    border: 2px solid transparent;
-    background: linear-gradient(white, white) padding-box,
-                var(--gradient) border-box;
+    border: 2px solid var(--primary);
     transform: scale(1.05);
     z-index: 2;
     box-shadow: 0 25px 50px rgba(108, 99, 255, 0.15);
@@ -1254,11 +1277,11 @@ h1, h2, h3, h4, .logo {
 .price .amount {
     font-size: 2.5rem;
     font-weight: 800;
-    color: var(--primary-color);
+    color: var(--primary);
 }
 
 .price .period {
-    color: #666;
+    color: var(--gray-medium);
     font-size: 1.1rem;
 }
 
@@ -1280,12 +1303,12 @@ h1, h2, h3, h4, .logo {
     align-items: center;
     gap: 15px;
     margin-bottom: 15px;
-    color: #555;
+    color: var(--gray-medium);
     font-size: 1.1rem;
 }
 
 .subscription-features i {
-    color: var(--primary-color);
+    color: var(--primary);
     font-size: 1.2rem;
 }
 
@@ -1313,9 +1336,9 @@ h1, h2, h3, h4, .logo {
 .subscription-benefits i {
     font-size: 2.5rem;
     margin-bottom: 20px;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--primary);
+    -webkit-text-fill-color: var(--primary);
+    background: none;
 }
 
 .subscription-benefits h4 {
@@ -1325,7 +1348,7 @@ h1, h2, h3, h4, .logo {
 }
 
 .subscription-benefits p {
-    color: #666;
+    color: var(--gray-medium);
     font-size: 1.1rem;
     line-height: 1.5;
 }
@@ -1365,7 +1388,7 @@ h1, h2, h3, h4, .logo {
 /* Shop sekce */
 .shop {
     padding: 120px 0;
-    background: white;
+    background: var(--white);
     position: relative;
     overflow: hidden;
 }
@@ -1396,12 +1419,13 @@ h1, h2, h3, h4, .logo {
 }
 
 .product-card {
-    background: white;
+    background: var(--white);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     position: relative;
+    border: 1px solid var(--gray-light);
 }
 
 .product-card:hover {
@@ -1433,8 +1457,8 @@ h1, h2, h3, h4, .logo {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: var(--gradient);
-    color: white;
+    background: var(--primary);
+    color: var(--white);
     padding: 8px 20px;
     border-radius: 30px;
     font-size: 0.9rem;
@@ -1455,7 +1479,7 @@ h1, h2, h3, h4, .logo {
 }
 
 .product-description {
-    color: #666;
+    color: var(--gray-medium);
     font-size: 1.1rem;
     margin-bottom: 20px;
     line-height: 1.6;
@@ -1471,12 +1495,12 @@ h1, h2, h3, h4, .logo {
     align-items: center;
     gap: 15px;
     margin-bottom: 12px;
-    color: #555;
+    color: var(--gray-medium);
     font-size: 1.1rem;
 }
 
 .product-features i {
-    color: var(--primary-color);
+    color: var(--primary);
     font-size: 1.2rem;
 }
 
@@ -1490,7 +1514,7 @@ h1, h2, h3, h4, .logo {
 .price {
     font-size: 2rem;
     font-weight: 800;
-    color: var(--primary-color);
+    color: var(--primary);
 }
 
 .original-price {
@@ -1525,7 +1549,7 @@ h1, h2, h3, h4, .logo {
 }
 
 .quantity-btn:hover {
-    background: var(--gradient);
+    background: var(--primary);
     color: white;
 }
 
@@ -1582,9 +1606,9 @@ h1, h2, h3, h4, .logo {
 .shop-benefit i {
     font-size: 2.5rem;
     margin-bottom: 20px;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--primary);
+    -webkit-text-fill-color: var(--primary);
+    background: none;
 }
 
 .shop-benefit h4 {
@@ -1594,7 +1618,7 @@ h1, h2, h3, h4, .logo {
 }
 
 .shop-benefit p {
-    color: #666;
+    color: var(--gray-medium);
     font-size: 1.1rem;
     line-height: 1.5;
 }
